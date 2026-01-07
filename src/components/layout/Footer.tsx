@@ -7,9 +7,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="text-2xl font-bold text-gray-900 mb-2">DAO3</div>
+            <div className="flex items-center space-x-2 mb-2">
+              <img
+                src="/logo.png"
+                alt="DAO³ Labs"
+                className="h-8 w-auto"
+              />
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent">
+                DAO³ Labs
+              </span>
+            </div>
             <p className="text-sm text-gray-600">
-              Web3 工具导航平台，帮助您发现最好的区块链工具和资源
+              一站式Web3工具导航平台
             </p>
           </div>
 
@@ -46,7 +55,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/tools?category=meme" className="text-sm text-gray-600 hover:text-blue-600 transition-colors">
-                  Meme 工具
+                  Meme工具
                 </Link>
               </li>
               <li>
@@ -77,7 +86,7 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-gray-200 text-center">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} DAO3. All rights reserved.
+            © {new Date().getFullYear()} DAO³ Labs. 版权所有
           </p>
         </div>
       </div>

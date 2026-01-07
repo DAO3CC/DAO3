@@ -39,7 +39,7 @@ export default function AcademyPage() {
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-blue-600 to-purple-600 text-white py-16 px-4">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">DAO3 加密学院</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">DAO³ 加密学院</h1>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
             您值得信赖的加密知识与行业洞察平台
           </p>
@@ -204,12 +204,9 @@ export default function AcademyPage() {
                     </h3>
                     <Link
                       href={`/academy?category=${category.id}`}
-                      className="text-blue-600 hover:text-blue-700 font-medium flex items-center"
+                      className="text-blue-600 hover:text-blue-700 font-medium"
                     >
                       查看更多
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
                     </Link>
                   </div>
 

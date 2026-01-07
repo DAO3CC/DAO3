@@ -60,7 +60,7 @@ export default function AirdropsPage() {
                     : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
                 }`}
               >
-                <span>{chain.icon}</span>
+                <img src={chain.logo} alt={chain.name} className="w-5 h-5 object-contain" />
                 <span>{chain.name}</span>
               </button>
             ))}
@@ -229,8 +229,9 @@ export default function AirdropsPage() {
 
                   {/* Chain Badge */}
                   {chain && (
-                    <div className={`absolute top-4 right-4 text-xs px-3 py-1 rounded-full font-medium text-white bg-gradient-to-r ${chain.color}`}>
-                      {chain.icon} {chain.name}
+                    <div className={`absolute top-4 right-4 text-xs px-3 py-1 rounded-full font-medium text-white bg-gradient-to-r ${chain.color} flex items-center space-x-1`}>
+                      <img src={chain.logo} alt={chain.name} className="w-3 h-3 object-contain" />
+                      <span>{chain.name}</span>
                     </div>
                   )}
                 </div>

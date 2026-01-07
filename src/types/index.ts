@@ -4,6 +4,7 @@ export interface Category {
   name: string;
   slug: string;
   icon?: string;
+  logo?: string; // 分类logo
   description?: string;
   order: number;
   visible?: boolean; // 是否在导航中显示

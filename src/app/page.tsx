@@ -158,104 +158,87 @@ export default function Home() {
         .stagger-6 { animation-delay: 0.6s; }
       `}</style>
 
-      {/* Hero Section - 高级动画 */}
+      {/* Hero Section - 重新设计更大气的版本 */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-blue-50">
-        {/* 动态网格背景 - 视差效果 */}
+        {/* 动态网格背景 */}
         <div
-          className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px] transition-transform duration-300 ease-out"
+          className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.05)_1px,transparent_1px)] bg-[size:60px_60px]"
           style={{
             transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
             maskImage: 'radial-gradient(ellipse 80% 50% at 50% 50%, #000 70%, transparent 100%)',
           }}
         ></div>
 
-        {/* 粒子光晕效果 - 浮动动画 */}
+        {/* 粒子光晕效果 */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-400/10 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl animate-float stagger-2"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-float stagger-4"></div>
-
-        {/* 鼠标跟随光效 - 延迟跟随 */}
-        <div
-          className="absolute w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none transition-transform duration-500 ease-out"
-          style={{
-            transform: `translate(${mousePosition.x - 192}px, ${mousePosition.y - 192}px)`,
-          }}
-        ></div>
 
         {/* 主内容 */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          {/* 品牌标识 - 淡入动画 */}
-          <div className="mb-8 animate-slide-up">
-            <div className="inline-flex items-center space-x-3 bg-white/80 backdrop-blur-xl border border-blue-100 rounded-2xl px-6 py-3 mb-6 shadow-lg shadow-blue-100/50 hover:shadow-xl hover:shadow-blue-200/50 transition-all duration-300 hover:scale-105">
-              <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-[0_0_20px_rgba(34,197,94,0.4)]"></div>
-              <span className="text-sm font-medium text-gray-600 tracking-wide">去中心化 · 开放 · 创新</span>
+        <div className="relative z-10 container mx-auto px-4 text-center py-20">
+          {/* Logo部分 - 更大 */}
+          <div className="mb-12">
+            <h1 className="text-8xl md:text-10xl lg:text-[12rem] font-bold tracking-tight mb-4">
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent gradient-animate">
+                DAO³
+              </span>
+            </h1>
+            <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800 tracking-[0.2em]">
+              Labs
             </div>
+          </div>
 
-            {/* Logo - 渐变动画 */}
-            <div className="mb-6">
-              <h1 className="text-7xl md:text-9xl font-bold tracking-tight mb-2 animate-slide-up stagger-2">
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent gradient-animate">
-                  DAO³
-                </span>
-              </h1>
-              <div className="text-4xl md:text-5xl font-bold text-gray-800 tracking-[0.3em] animate-slide-up stagger-3">
-                Labs
-              </div>
-            </div>
+          {/* 副标题 - 更大 */}
+          <p className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-8 tracking-wide font-semibold">
+            区块链创新实验室
+          </p>
 
-            {/* 副标题 */}
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 tracking-wide font-medium animate-slide-up stagger-4">
-              区块链创新实验室
-            </p>
+          {/* 介绍文字 - 更大更突出 */}
+          <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-5xl mx-auto leading-relaxed font-medium">
+            探索去中心化技术的未来，汇聚 Web3 工具、空投机会与前沿知识
+            <br />
+            让创新触手可及，让去中心化惠及每个人
+          </p>
 
-            {/* 介绍文字 */}
-            <p className="text-lg text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-5">
-              探索去中心化技术的未来，汇聚 Web3 工具、空投机会与前沿知识
-              <br />
-              让创新触手可及，让去中心化惠及每个人
-            </p>
+          {/* CTA 按钮 - 更大更突出 */}
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+            <Link
+              href="/tools"
+              className="group relative px-16 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-bold text-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50"
+              style={{ animation: 'pulse-glow 2s ease-in-out infinite' }}
+            >
+              <div className="absolute inset-0 shimmer"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <span className="relative flex items-center">
+                探索工具
+                <svg className="w-6 h-6 ml-3 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </Link>
 
-            {/* CTA 按钮 - 高级悬停效果 */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-slide-up stagger-6">
-              <Link
-                href="/tools"
-                className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50"
-                style={{ animation: 'pulse-glow 2s ease-in-out infinite' }}
-              >
-                <div className="absolute inset-0 shimmer"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <span className="relative flex items-center">
-                  探索工具
-                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </span>
-              </Link>
-
-              <Link
-                href="/airdrops"
-                className="group relative px-10 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl font-semibold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:border-blue-400 hover:bg-blue-50 hover:shadow-xl"
-              >
-                <div className="absolute inset-0 bg-blue-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-                <span className="relative flex items-center">
-                  空投任务
-                  <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                  </svg>
-                </span>
-              </Link>
-            </div>
+            <Link
+              href="/airdrops"
+              className="group relative px-16 py-6 bg-white border-2 border-gray-200 text-gray-700 rounded-2xl font-bold text-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:border-blue-400 hover:bg-blue-50 hover:shadow-xl"
+            >
+              <div className="absolute inset-0 bg-blue-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+              <span className="relative flex items-center">
+                空投任务
+                <svg className="w-6 h-6 ml-3 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                </svg>
+              </span>
+            </Link>
           </div>
 
           {/* 滚动提示 */}
           <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
           </div>
         </div>
 
-        {/* 装饰性科技元素 */}
+        {/* 装饰性元素 */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
@@ -263,21 +246,21 @@ export default function Home() {
       <section
         id="features"
         data-animate
-        className="py-24 px-4 relative bg-white transition-all duration-1000"
+        className="py-40 px-4 relative bg-white transition-all duration-1000"
         style={{
           opacity: visibleSections.has('features') ? 1 : 0,
           transform: visibleSections.has('features') ? 'translateY(0)' : 'translateY(40px)',
         }}
       >
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+        <div className="container mx-auto max-w-7xl">
+          <div className="text-center mb-28">
+            <h2 className="text-6xl md:text-7xl font-bold mb-8 text-gray-900">
               核心服务
             </h2>
-            <p className="text-gray-600 text-lg">打造一站式 Web3 服务平台</p>
+            <p className="text-gray-600 text-2xl font-light">打造一站式 Web3 服务平台</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               {
                 icon: '🔧',
@@ -304,7 +287,7 @@ export default function Home() {
               <Link
                 key={index}
                 href={feature.link}
-                className={`group relative bg-white border-2 border-gray-100 rounded-3xl p-8 card-3d hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100/50 overflow-hidden transition-all duration-500`}
+                className={`group relative bg-white border-2 border-gray-100 rounded-3xl p-12 card-3d hover:border-blue-200 hover:shadow-2xl hover:shadow-blue-100/50 overflow-hidden transition-all duration-500`}
                 style={{
                   opacity: visibleSections.has('features') ? 1 : 0,
                   animation: visibleSections.has('features') ? `slideUp 0.6s ease-out ${index * 0.15}s forwards` : 'none',
@@ -315,16 +298,16 @@ export default function Home() {
 
                 {/* 图标动画 */}
                 <div className="relative">
-                  <div className={`inline-block p-4 bg-gradient-to-br ${feature.color} rounded-2xl mb-6 text-4xl shadow-lg transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                  <div className={`inline-block p-6 bg-gradient-to-br ${feature.color} rounded-3xl mb-8 text-6xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
                     {feature.icon}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <h3 className="text-3xl font-bold mb-6 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed mb-6">{feature.description}</p>
-                  <div className={`flex items-center bg-gradient-to-r ${feature.color} bg-clip-text text-transparent font-semibold group-hover:translate-x-2 transition-transform duration-300`}>
+                  <p className="text-gray-600 text-lg leading-relaxed mb-8">{feature.description}</p>
+                  <div className={`flex items-center bg-gradient-to-r ${feature.color} bg-clip-text text-transparent font-semibold text-lg group-hover:translate-x-2 transition-transform duration-300`}>
                     了解更多
-                    <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </div>
@@ -339,19 +322,19 @@ export default function Home() {
       <section
         id="stats"
         data-animate
-        className="py-24 px-4 relative overflow-hidden bg-gradient-to-r from-blue-50 via-purple-50 to-cyan-50 transition-all duration-1000"
+        className="py-40 px-4 relative overflow-hidden bg-gradient-to-r from-blue-50 via-purple-50 to-cyan-50 transition-all duration-1000"
         style={{
           opacity: visibleSections.has('stats') ? 1 : 0,
           transform: visibleSections.has('stats') ? 'translateY(0)' : 'translateY(40px)',
         }}
       >
-        <div className="container mx-auto relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div className="container mx-auto relative z-10 max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-16">
             {[
-              { value: '100+', label: '精选工具', color: 'from-blue-600 to-cyan-600' },
-              { value: '50+', label: '空投任务', color: 'from-purple-600 to-pink-600' },
-              { value: '8+', label: '支持公链', color: 'from-green-600 to-emerald-600' },
-              { value: '24/7', label: '实时更新', color: 'from-orange-600 to-red-600' },
+              { value: '226+', label: '精选工具', color: 'from-blue-600 to-cyan-600' },
+              { value: '7+', label: '空投任务', color: 'from-purple-600 to-pink-600' },
+              { value: '16+', label: '热门分类', color: 'from-green-600 to-emerald-600' },
+              { value: '8+', label: '支持公链', color: 'from-orange-600 to-red-600' },
             ].map((stat, index) => (
               <div
                 key={index}
@@ -360,10 +343,10 @@ export default function Home() {
                   animation: visibleSections.has('stats') ? `scaleIn 0.6s ease-out ${index * 0.1}s forwards` : 'none',
                 }}
               >
-                <div className={`text-5xl md:text-6xl font-bold mb-2 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-110 gradient-animate`}>
+                <div className={`text-6xl md:text-7xl font-bold mb-4 bg-gradient-to-r ${stat.color} bg-clip-text text-transparent transition-transform duration-300 group-hover:scale-110 gradient-animate`}>
                   {stat.value}
                 </div>
-                <div className="text-gray-600 text-sm uppercase tracking-wider font-medium group-hover:text-gray-900 transition-colors duration-300">
+                <div className="text-gray-600 text-base uppercase tracking-wider font-medium group-hover:text-gray-900 transition-colors duration-300">
                   {stat.label}
                 </div>
               </div>
@@ -376,32 +359,34 @@ export default function Home() {
       <section
         id="airdrops"
         data-animate
-        className="py-24 px-4 relative bg-white transition-all duration-1000"
+        className="py-40 px-4 relative bg-white transition-all duration-1000"
         style={{
           opacity: visibleSections.has('airdrops') ? 1 : 0,
           transform: visibleSections.has('airdrops') ? 'translateY(0)' : 'translateY(40px)',
         }}
       >
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between mb-12">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex items-center justify-between mb-20">
             <div>
-              <h2 className="text-4xl font-bold mb-2 text-gray-900">
+              <h2 className="text-6xl md:text-7xl font-bold mb-6 text-gray-900">
                 热门空投
               </h2>
-              <p className="text-gray-600">发现最新的区块链空投机会</p>
+              <p className="text-gray-600 text-2xl font-light">发现最新的区块链空投机会</p>
             </div>
             <Link
               href="/airdrops"
-              className="hidden md:flex items-center px-6 py-3 bg-gray-50 border-2 border-gray-200 rounded-xl hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 font-medium text-gray-700 hover:shadow-lg group"
+              className="hidden md:flex items-center px-10 py-5 bg-gray-50 border-2 border-gray-200 rounded-2xl hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 font-medium text-gray-700 hover:shadow-lg group whitespace-nowrap"
             >
-              查看全部
-              <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <span className="flex items-center text-lg">
+                查看全部
+                <svg className="w-6 h-6 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </span>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {filteredAirdrops.slice(0, 6).map((airdrop, index) => {
               const chain = mockChains.find((c) => c.id === airdrop.chain);
               return (
@@ -442,8 +427,9 @@ export default function Home() {
 
                     {/* 链标签 */}
                     {chain && (
-                      <div className={`absolute top-4 right-4 text-xs px-3 py-1.5 rounded-full font-medium text-white bg-gradient-to-r ${chain.color} shadow-lg transition-transform duration-300 group-hover:scale-110`}>
-                        {chain.icon} {chain.name}
+                      <div className={`absolute top-4 right-4 text-xs px-3 py-1.5 rounded-full font-medium text-white bg-gradient-to-r ${chain.color} shadow-lg transition-transform duration-300 group-hover:scale-110 flex items-center space-x-2`}>
+                        <img src={chain.logo} alt={chain.name} className="w-4 h-4 object-contain" />
+                        <span>{chain.name}</span>
                       </div>
                     )}
                   </div>
@@ -503,26 +489,26 @@ export default function Home() {
       <section
         id="chains"
         data-animate
-        className="py-24 px-4 relative overflow-hidden bg-gray-50 transition-all duration-1000"
+        className="py-40 px-4 relative overflow-hidden bg-gray-50 transition-all duration-1000"
         style={{
           opacity: visibleSections.has('chains') ? 1 : 0,
           transform: visibleSections.has('chains') ? 'translateY(0)' : 'translateY(40px)',
         }}
       >
-        <div className="container mx-auto relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-gray-900">
+        <div className="container mx-auto relative z-10 max-w-6xl">
+          <div className="text-center mb-28">
+            <h2 className="text-6xl md:text-7xl font-bold mb-8 text-gray-900">
               多链生态
             </h2>
-            <p className="text-gray-600 text-lg">支持主流区块链，一键切换</p>
+            <p className="text-gray-600 text-2xl font-light">支持主流区块链，一键切换</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-8">
             {mockChains.map((chain, index) => (
               <button
                 key={chain.id}
                 onClick={() => setSelectedChain(chain.id)}
-                className={`group px-6 py-4 rounded-xl font-medium transition-all duration-500 transform hover:scale-110 flex items-center space-x-3 border-2 ${
+                className={`group px-10 py-6 rounded-2xl font-medium transition-all duration-500 transform hover:scale-110 flex items-center space-x-4 border-2 ${
                   selectedChain === chain.id
                     ? `bg-gradient-to-r ${chain.color} text-white border-transparent shadow-2xl`
                     : 'bg-white border-gray-200 text-gray-700 hover:border-blue-300 hover:shadow-xl'
@@ -531,19 +517,19 @@ export default function Home() {
                   animation: visibleSections.has('chains') ? `scaleIn 0.6s ease-out ${index * 0.08}s forwards` : 'none',
                 }}
               >
-                <span className="text-2xl transition-transform duration-300 group-hover:rotate-12">{chain.icon}</span>
-                <span className="text-lg">{chain.name}</span>
+                <img src={chain.logo} alt={chain.name} className="w-12 h-12 object-contain transition-transform duration-300 group-hover:rotate-12" />
+                <span className="text-2xl">{chain.name}</span>
               </button>
             ))}
             <button
               onClick={() => setSelectedChain(null)}
-              className={`px-6 py-4 rounded-xl font-medium transition-all duration-500 transform hover:scale-110 border-2 ${
+              className={`px-10 py-6 rounded-2xl font-medium transition-all duration-500 transform hover:scale-110 border-2 ${
                 !selectedChain
                   ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white border-transparent shadow-2xl'
                   : 'bg-white border-gray-200 text-gray-700 hover:border-blue-300 hover:shadow-xl'
               }`}
             >
-              <span className="text-lg">全部链</span>
+              <span className="text-2xl">全部链</span>
             </button>
           </div>
         </div>
@@ -553,7 +539,7 @@ export default function Home() {
       <section
         id="cta"
         data-animate
-        className="py-24 px-4 relative overflow-hidden bg-white transition-all duration-1000"
+        className="py-48 px-4 relative overflow-hidden bg-white transition-all duration-1000"
         style={{
           opacity: visibleSections.has('cta') ? 1 : 0,
           transform: visibleSections.has('cta') ? 'translateY(0)' : 'translateY(40px)',
@@ -562,24 +548,24 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-100/50 via-purple-100/50 to-cyan-100/50"></div>
         <div className="absolute inset-0 bg-[linear-gradient(rgba(59,130,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px]"></div>
 
-        <div className="container mx-auto relative z-10 text-center max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+        <div className="container mx-auto relative z-10 text-center max-w-5xl">
+          <h2 className="text-6xl md:text-7xl font-bold mb-8 text-gray-900">
             开启去中心化之旅
           </h2>
-          <p className="text-xl text-gray-600 mb-12">
+          <p className="text-2xl text-gray-600 mb-16 font-light">
             加入 DAO³ Labs，与我们一起探索 Web3 的无限可能
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center">
             <Link
               href="/tools"
-              className="px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold text-lg transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50 overflow-hidden relative group"
+              className="px-12 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-bold text-xl transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50 overflow-hidden relative group"
             >
               <div className="absolute inset-0 shimmer"></div>
               <span className="relative">立即开始</span>
             </Link>
             <Link
               href="/academy"
-              className="px-10 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-xl font-semibold text-lg transition-all duration-500 hover:border-blue-400 hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
+              className="px-12 py-6 bg-white border-2 border-gray-200 text-gray-700 rounded-2xl font-bold text-xl transition-all duration-500 hover:border-blue-400 hover:bg-blue-50 hover:scale-105 hover:shadow-xl"
             >
               了解更多
             </Link>
@@ -588,17 +574,17 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-4 border-t border-gray-200 bg-gray-50">
-        <div className="container mx-auto text-center">
-          <div className="mb-6">
-            <h3 className="text-2xl font-bold mb-2">
+      <footer className="py-20 px-4 border-t border-gray-200 bg-gray-50">
+        <div className="container mx-auto text-center max-w-4xl">
+          <div className="mb-10">
+            <h3 className="text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent gradient-animate">
                 DAO³ Labs
               </span>
             </h3>
-            <p className="text-gray-600 text-sm">区块链创新实验室</p>
+            <p className="text-gray-600 text-lg font-light">区块链创新实验室</p>
           </div>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-base">
             © 2025 DAO³ Labs. 致力于推动去中心化技术发展
           </p>
         </div>

@@ -100,7 +100,7 @@ export default function AdminPage() {
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
         <div className="max-w-md w-full bg-white rounded-2xl shadow-lg p-8">
           <div className="text-center mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">DAO3 后台管理</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">DAO³ 后台管理</h1>
             <p className="text-gray-600">请输入管理员密码</p>
           </div>
           <input
@@ -271,7 +271,7 @@ export default function AdminPage() {
       content: '',
       category: articleCategories[0].id,
       tags: [],
-      author: 'DAO3 Team',
+      author: 'DAO³ Labs',
       publishedAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       order: articles.length,
@@ -313,7 +313,7 @@ export default function AdminPage() {
       <div className="bg-white border-b border-gray-200 px-4 py-3">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <h1 className="text-xl font-bold text-gray-900">DAO3 后台管理</h1>
+            <h1 className="text-xl font-bold text-gray-900">DAO³ 后台管理</h1>
           </div>
           <button
             onClick={handleLogout}

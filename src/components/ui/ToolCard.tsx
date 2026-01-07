@@ -15,7 +15,7 @@ export default function ToolCard({ tool, onToggleFavorite, isFavorite = false }:
   const [imageError, setImageError] = useState(false);
 
   return (
-    <div className="group relative bg-white hover:bg-gray-50 border border-gray-200 hover:border-blue-300 rounded-xl p-5 shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="group relative bg-white hover:bg-gray-50 border border-gray-200 hover:border-blue-300 rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-300 h-full">
       {/* Hot Badge */}
       {tool.hot && (
         <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-medium z-10 shadow-sm">
@@ -26,8 +26,12 @@ export default function ToolCard({ tool, onToggleFavorite, isFavorite = false }:
       {/* Favorite Button */}
       {onToggleFavorite && (
         <button
-          onClick={() => onToggleFavorite(tool.id)}
-          className="absolute top-4 right-4 z-10 p-1.5 rounded-lg bg-white/80 hover:bg-white shadow-sm hover:shadow transition-colors backdrop-blur"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            onToggleFavorite(tool.id);
+          }}
+          className="absolute top-3 right-3 z-10 p-1.5 rounded-lg bg-white/80 hover:bg-white shadow-sm hover:shadow transition-colors backdrop-blur"
           aria-label={isFavorite ? '取消收藏' : '收藏'}
         >
           <svg
@@ -47,10 +51,10 @@ export default function ToolCard({ tool, onToggleFavorite, isFavorite = false }:
       )}
 
       {/* Tool Link */}
-      <Link href={tool.url} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="flex items-start space-x-4">
+      <Link href={tool.url} target="_blank" rel="noopener noreferrer" className="block h-full">
+        <div className="flex items-start space-x-3 sm:space-x-4">
           {/* Tool Icon */}
-          <div className="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
+          <div className="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden bg-gray-100 border border-gray-200">
             {!imageError ? (
               <Image
                 src={tool.icon}
@@ -61,7 +65,7 @@ export default function ToolCard({ tool, onToggleFavorite, isFavorite = false }:
                 onError={() => setImageError(true)}
               />
             ) : (
-              <div className="w-full h-full flex items-center justify-center text-2xl">
+              <div className="w-full h-full flex items-center justify-center text-xl sm:text-2xl">
                 🔧
               </div>
             )}
@@ -69,24 +73,10 @@ export default function ToolCard({ tool, onToggleFavorite, isFavorite = false }:
 
           {/* Tool Info */}
           <div className="flex-1 min-w-0">
-            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors mb-1 line-clamp-1">
               {tool.name}
             </h3>
-            <p className="text-sm text-gray-600 line-clamp-2 mb-2">{tool.description}</p>
-
-            {/* Tags */}
-            {tool.tags && tool.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {tool.tags.map((tag, index) => (
-                  <span
-                    key={index}
-                    className="text-xs px-2 py-1 bg-blue-50 text-blue-600 rounded-md border border-blue-100"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
+            <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">{tool.description}</p>
           </div>
         </div>
       </Link>
