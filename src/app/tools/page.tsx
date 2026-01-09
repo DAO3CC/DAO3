@@ -87,7 +87,28 @@ export default function ToolsPage() {
       // 第一次点击或点击不同分类：只滚动定位
       setLastClickedCategory(categoryId);
       setTimeout(() => {
-        document.getElementById(`category-${categoryId}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const targetElement = document.getElementById(`category-${categoryId}`);
+        if (targetElement) {
+          // 获取左侧被点击导航按钮的位置
+          const navButtons = document.querySelectorAll(`button[onclick*="${categoryId}"]`);
+          let navButtonTop = 0;
+          navButtons.forEach(btn => {
+            const rect = btn.getBoundingClientRect();
+            if (rect.top > 0) { // 找到可见的导航按钮
+              navButtonTop = rect.top;
+            }
+          });
+
+          // 计算目标滚动位置，使右侧分类标题与左侧导航按钮对齐
+          const targetRect = targetElement.getBoundingClientRect();
+          const currentScroll = window.pageYOffset;
+          const offsetPosition = currentScroll + (targetRect.top - navButtonTop);
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
       }, 100);
     }
   };
@@ -112,89 +133,132 @@ export default function ToolsPage() {
   }, [selectedCategory, searchQuery, favorites]);
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <style jsx global>{`
+        .sidebar-fixed-force {
+          position: fixed !important;
+          left: 0 !important;
+          top: 64px !important;
+          bottom: 0 !important;
+          width: 96px !important;
+          background-color: white !important;
+          border-right: 1px solid rgb(229 231 235) !important;
+          z-index: 9999 !important;
+        }
 
-      <div className="px-4 py-6">
-        <div className="flex gap-6">
-          {/* 左侧分类侧边栏 - 使用fixed定位，完全固定，无任何滚动 */}
-          <aside className="fixed left-0 top-0 h-full w-16 md:w-56 bg-white border-r border-gray-200 z-40 overflow-hidden">
-            <div className="h-full py-4 md:py-6 px-2 md:px-4 space-y-2">
-              {/* 小屏幕 - 只显示图标 */}
-              <div className="md:hidden space-y-2">
+        @media (min-width: 768px) {
+          .sidebar-fixed-force {
+            width: 224px !important;
+          }
+        }
+
+        @keyframes rotate3d {
+          0% {
+            transform: perspective(500px) rotateY(0deg);
+          }
+          100% {
+            transform: perspective(500px) rotateY(360deg);
+          }
+        }
+
+        .icon-3d {
+        }
+
+        .group:hover .icon-3d {
+          animation: rotate3d 0.8s ease-out;
+        }
+
+        .group:hover .icon-label {
+          opacity: 1 !important;
+        }
+      `}</style>
+
+      <div className="min-h-screen bg-white">
+        {/* 左侧分类侧边栏 - 固定定位，不随页面滚动 */}
+        <aside className="sidebar-fixed-force">
+          <div className="h-full px-2 md:px-4 pt-2 space-y-2">
+            {/* 小屏幕 - 只显示图标 */}
+            <div className="md:hidden space-y-2">
                 {/* 我常看的 */}
-                <button
-                  onClick={() => handleCategoryClick('favorites')}
-                  title="我常看的"
-                  className={`w-full flex justify-center px-3 py-3 rounded-lg transition-colors ${
-                    lastClickedCategory === 'favorites'
-                      ? 'bg-blue-50 text-blue-700'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  <span className="text-2xl">⭐</span>
-                </button>
+                <div className="relative group">
+                  <button
+                    onClick={() => handleCategoryClick('favorites')}
+                    className={`w-full flex flex-col items-center justify-center px-3 py-3 rounded-lg transition-colors ${
+                      lastClickedCategory === 'favorites'
+                        ? 'bg-blue-50'
+                        : 'hover:bg-gray-100'
+                    }`}
+                  >
+                    <svg className="w-[50px] h-[50px] text-yellow-500 icon-3d" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                    <span className="icon-label text-xs mt-1 font-medium opacity-0 transition-opacity duration-300">收藏</span>
+                  </button>
+                </div>
 
                 {/* 全部工具 */}
-                <button
-                  onClick={() => handleCategoryClick('all')}
-                  title="全部工具"
-                  className={`w-full flex justify-center px-3 py-3 rounded-lg transition-colors ${
-                    lastClickedCategory === 'all'
-                      ? 'bg-blue-50 text-blue-700'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  <img
-                    src="/icons/categories/all-tools.png"
-                    alt="全部工具"
-                    className="w-6 h-6 object-contain"
-                  />
-                </button>
+                <div className="relative group">
+                  <button
+                    onClick={() => handleCategoryClick('all')}
+                    className={`w-full flex flex-col items-center justify-center px-3 py-3 rounded-lg transition-colors ${
+                      lastClickedCategory === 'all'
+                        ? 'bg-blue-50'
+                        : 'hover:bg-gray-100'
+                    }`}
+                  >
+                    <img
+                      src="/icons/categories/all-tools.png"
+                      alt="全部工具"
+                      className="w-[60px] h-[60px] object-contain icon-3d"
+                    />
+                    <span className="icon-label text-xs mt-1 font-medium opacity-0 transition-opacity duration-300">全部</span>
+                  </button>
+                </div>
 
                 {/* 分类列表 - 只显示图标 */}
                 {mockCategories.map((category) => (
-                  <button
-                    key={category.id}
-                    onClick={() => handleCategoryClick(category.id)}
-                    title={category.name}
-                    className={`w-full flex justify-center px-3 py-3 rounded-lg transition-colors ${
-                      lastClickedCategory === category.id
-                        ? 'bg-blue-50 text-blue-700'
-                        : 'text-gray-700 hover:bg-gray-100'
-                    }`}
-                  >
-                    {category.logo ? (
-                      <img
-                        src={category.logo}
-                        alt={category.name}
-                        className="w-6 h-6 object-contain"
-                      />
-                    ) : (
-                      <span className="text-xl">{category.icon || '📁'}</span>
-                    )}
-                  </button>
+                  <div key={category.id} className="relative group">
+                    <button
+                      onClick={() => handleCategoryClick(category.id)}
+                      className={`w-full flex flex-col items-center justify-center px-3 py-3 rounded-lg transition-colors ${
+                        lastClickedCategory === category.id
+                          ? 'bg-blue-50'
+                          : 'hover:bg-gray-100'
+                      }`}
+                    >
+                      {category.logo ? (
+                        <img
+                          src={category.logo}
+                          alt={category.name}
+                          className="w-[50px] h-[50px] object-contain icon-3d"
+                        />
+                      ) : (
+                        <span className="text-[50px] icon-3d">{category.icon || '📁'}</span>
+                      )}
+                      <span className="icon-label text-xs mt-1 font-medium opacity-0 transition-opacity duration-300 truncate w-full text-center">
+                        {category.shortName || category.name}
+                      </span>
+                    </button>
+                  </div>
                 ))}
               </div>
 
               {/* 大屏幕 - 显示完整的侧边栏 */}
               <div className="hidden md:block">
-                <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
-                  分类导航
-                </h2>
                 <nav className="space-y-1">
                   {/* 我常看的 */}
                   <button
                     onClick={() => handleCategoryClick('favorites')}
                     className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       lastClickedCategory === 'favorites'
-                        ? expandedCategories.has('favorites')
-                          ? 'text-gray-700 hover:bg-gray-100'
-                          : 'bg-blue-50 text-blue-700'
+                        ? 'bg-blue-50 text-blue-700'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
-                    <span className="text-lg">⭐</span>
-                    <span className="flex-1 text-left">我常看的</span>
+                    <svg className="w-6 h-6 flex-shrink-0 text-yellow-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                    </svg>
+                    <span className="flex-1 text-left">收藏</span>
                     {favorites.length > 0 && (
                       <span className="text-xs text-gray-400">{favorites.length}</span>
                     )}
@@ -205,16 +269,14 @@ export default function ToolsPage() {
                     onClick={() => handleCategoryClick('all')}
                     className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                       lastClickedCategory === 'all'
-                        ? expandedCategories.has('all')
-                          ? 'text-gray-700 hover:bg-gray-100'
-                          : 'bg-blue-50 text-blue-700'
+                        ? 'bg-blue-50 text-blue-700'
                         : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
                     <img
                       src="/icons/categories/all-tools.png"
                       alt="全部工具"
-                      className="w-5 h-5 object-contain flex-shrink-0"
+                      className="w-6 h-6 object-contain flex-shrink-0"
                     />
                     <span className="flex-1 text-left">全部工具</span>
                     <span className="text-xs text-gray-400">{mockTools.length}</span>
@@ -226,7 +288,6 @@ export default function ToolsPage() {
                   {mockCategories.map((category) => {
                     const count = mockTools.filter((t) => t.category === category.id).length;
                     const isLastClicked = lastClickedCategory === category.id;
-                    const isExpanded = expandedCategories.has(category.id);
 
                     return (
                       <button
@@ -234,9 +295,7 @@ export default function ToolsPage() {
                         onClick={() => handleCategoryClick(category.id)}
                         className={`w-full flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                           isLastClicked
-                            ? isExpanded
-                              ? 'text-gray-700 hover:bg-gray-100'
-                              : 'bg-blue-50 text-blue-700'
+                            ? 'bg-blue-50 text-blue-700'
                             : 'text-gray-700 hover:bg-gray-100'
                         }`}
                       >
@@ -244,10 +303,10 @@ export default function ToolsPage() {
                           <img
                             src={category.logo}
                             alt={category.name}
-                            className="w-5 h-5 object-contain flex-shrink-0"
+                            className="w-6 h-6 object-contain flex-shrink-0"
                           />
                         ) : (
-                          <span className="text-base">{category.icon || '📁'}</span>
+                          <span className="text-xl flex-shrink-0">{category.icon || '📁'}</span>
                         )}
                         <span className="flex-1 text-left truncate">{category.name}</span>
                         <span className="text-xs text-gray-400 flex-shrink-0">{count}</span>
@@ -257,22 +316,36 @@ export default function ToolsPage() {
                 </nav>
               </div>
             </div>
-          </aside>
+      </aside>
 
-          {/* 主内容区域 - 添加左边距以避开固定的侧边栏 */}
-          <div className="flex-1 min-w-0 ml-16 md:ml-56">
-            {/* Search Bar */}
-            <div className="mb-6">
-              <div className="relative max-w-xl">
-                <input
-                  type="text"
-                  placeholder="搜索工具名称、描述或标签..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full px-4 py-3 pl-12 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
-                />
+      {/* 主内容区域 - 添加左边距和padding以避开固定的侧边栏 */}
+      <div className="ml-24 md:ml-56">
+        {/* Hero Section */}
+        <section className="bg-gray-50 py-12 px-4 mb-6">
+          <div className="container mx-auto text-center">
+            {/* Wrench Icon */}
+            <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mb-4">
+              Web3 工具导航
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-base text-gray-500 mb-8 max-w-2xl mx-auto">
+              探索优质 Web3 工具，提升你的区块链体验
+            </p>
+
+            {/* Search Box */}
+            <div className="max-w-2xl mx-auto">
+              <div className="relative">
                 <svg
-                  className="absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+                  className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -284,9 +357,20 @@ export default function ToolsPage() {
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                   />
                 </svg>
+                <input
+                  type="text"
+                  placeholder="搜索工具名称、描述或标签..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-14 pr-6 py-4 bg-white border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
+                />
               </div>
             </div>
+          </div>
+        </section>
 
+        {/* 工具列表内容 */}
+        <div className="px-4 pb-6">
             {/* 搜索结果 */}
             {searchQuery && (
               <div className="mb-8">
@@ -294,7 +378,7 @@ export default function ToolsPage() {
                   找到 <span className="text-gray-900 font-medium">{filteredTools.length}</span> 个工具
                 </p>
                 {filteredTools.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
                     {filteredTools.map((tool) => (
                       <ToolCard
                         key={tool.id}
@@ -316,20 +400,22 @@ export default function ToolsPage() {
 
             {/* 按分类显示所有工具 */}
             {!searchQuery && (
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {/* 我常看的 */}
                 <section
                   id="category-favorites"
                   ref={(el) => { categoryRefs.current['favorites'] = el; }}
-                  className="scroll-mt-24 border border-gray-200 rounded-xl overflow-hidden"
+                  className="border border-gray-200 rounded-xl overflow-hidden"
                 >
                   <button
                     onClick={() => handleCategoryClick('favorites')}
                     className="w-full px-6 py-4 flex items-center justify-between hover:bg-gray-50 transition-colors"
                   >
                     <h2 className="text-2xl font-bold text-gray-900 flex items-center">
-                      <span className="text-2xl mr-3">⭐</span>
-                      我常看的
+                      <svg className="w-8 h-8 mr-3 text-yellow-500" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                      </svg>
+                      收藏
                       <span className="ml-3 text-sm font-normal text-gray-500">{favorites.length} 个工具</span>
                     </h2>
                     <svg
@@ -344,7 +430,7 @@ export default function ToolsPage() {
                   {expandedCategories.has('favorites') && (
                     <div className="px-6 pb-6">
                       {favorites.length > 0 ? (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
                           {mockTools.filter((tool) => favorites.includes(tool.id)).map((tool) => (
                             <ToolCard
                               key={tool.id}
@@ -369,7 +455,7 @@ export default function ToolsPage() {
                 <section
                   id="category-all"
                   ref={(el) => { categoryRefs.current['all'] = el; }}
-                  className="scroll-mt-24 border border-gray-200 rounded-xl overflow-hidden"
+                  className="border border-gray-200 rounded-xl overflow-hidden"
                 >
                   <button
                     onClick={() => handleCategoryClick('all')}
@@ -391,7 +477,7 @@ export default function ToolsPage() {
                   </button>
                   {expandedCategories.has('all') && (
                     <div className="px-6 pb-6">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
                         {mockTools.map((tool) => (
                           <ToolCard
                             key={tool.id}
@@ -416,7 +502,7 @@ export default function ToolsPage() {
                       key={category.id}
                       id={`category-${category.id}`}
                       ref={(el) => { categoryRefs.current[category.id] = el; }}
-                      className="scroll-mt-24 border border-gray-200 rounded-xl overflow-hidden"
+                      className="border border-gray-200 rounded-xl overflow-hidden"
                     >
                       <button
                         onClick={() => handleCategoryClick(category.id)}
@@ -442,7 +528,7 @@ export default function ToolsPage() {
                       </button>
                       {expandedCategories.has(category.id) && (
                         <div className="px-6 pb-6">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
                             {categoryTools.map((tool) => (
                               <ToolCard
                                 key={tool.id}
@@ -459,9 +545,9 @@ export default function ToolsPage() {
                 })}
               </div>
             )}
-          </div>
         </div>
       </div>
     </div>
+    </>
   );
 }

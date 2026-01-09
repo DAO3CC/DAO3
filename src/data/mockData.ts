@@ -21,7 +21,7 @@ export const mockCategories: Category[] = [
   { id: '4', name: '区块浏览器', slug: 'explorer', order: 4, logo: '/icons/categories/explorer.png' },
   { id: '5', name: '综合数据', slug: 'data', order: 5, logo: '/icons/categories/data.png' },
   { id: '6', name: 'DAT数据看板', slug: 'dat', order: 6, logo: '/icons/categories/dat.png' },
-  { id: '7', name: 'CeFi', slug: 'cefi', order: 7, logo: '/icons/categories/cefi.png' },
+  { id: '7', name: 'CeFi', slug: 'cefi', order: 7, logo: '/icons/categories/cefi.webp' },
   { id: '8', name: 'DeFi', slug: 'defi', order: 8, logo: '/icons/categories/defi.png' },
   { id: '9', name: 'NFT', slug: 'nft', order: 9, logo: '/icons/categories/nft.png' },
   { id: '10', name: 'DAO', slug: 'dao', order: 10, logo: '/icons/categories/dao.png' },
@@ -29,7 +29,7 @@ export const mockCategories: Category[] = [
   { id: '12', name: '空投', slug: 'airdrop', order: 12, logo: '/icons/categories/airdrop.png' },
   { id: '13', name: '矿业', slug: 'mining', order: 13, logo: '/icons/categories/mining.png' },
   { id: '14', name: '钱包和授权管理', slug: 'wallet', order: 14, logo: '/icons/categories/wallet.png' },
-  { id: '15', name: 'BTC生态', slug: 'btc', order: 15, logo: '/icons/categories/btc.png' },
+  { id: '15', name: 'BTC生态', slug: 'btc', order: 15, logo: '/icons/categories/btc.webp' },
   { id: '16', name: '其他', slug: 'other', order: 16, logo: '/icons/categories/other.png' },
 ];
 

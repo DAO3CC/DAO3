@@ -1,0 +1,20 @@
+{
+  "name": "DAO³ Labs - Web3 工具导航平台",
+  "short_name": "DAO³",
+  "description": "Web3、区块链、加密货币工具导航平台",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

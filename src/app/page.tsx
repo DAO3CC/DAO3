@@ -111,6 +111,17 @@ export default function Home() {
           100% { background-position: 0% 50%; }
         }
 
+        @keyframes letter-appear {
+          0% {
+            opacity: 0;
+            transform: translateY(20px) scale(0.8);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+          }
+        }
+
         .animate-float {
           animation: float 6s ease-in-out infinite;
         }
@@ -139,6 +150,12 @@ export default function Home() {
         .gradient-animate {
           background-size: 200% 200%;
           animation: gradient-shift 3s ease infinite;
+        }
+
+        .letter-animate {
+          display: inline-block;
+          animation: letter-appear 0.6s ease-out forwards;
+          opacity: 0;
         }
 
         .card-3d {
@@ -175,42 +192,42 @@ export default function Home() {
 
         {/* 主内容 */}
         <div className="relative z-10 container mx-auto px-4 text-center py-20">
-          {/* Logo部分 - 更大 */}
-          <div className="mb-12">
-            <h1 className="text-8xl md:text-10xl lg:text-[12rem] font-bold tracking-tight mb-4">
+          {/* Logo部分 */}
+          <div className="mb-16">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4">
               <span className="bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent gradient-animate">
                 DAO³
               </span>
             </h1>
-            <div className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800 tracking-[0.2em]">
+            <div className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 tracking-[0.2em]">
               Labs
             </div>
           </div>
 
-          {/* 副标题 - 更大 */}
-          <p className="text-3xl md:text-4xl lg:text-5xl text-gray-700 mb-8 tracking-wide font-semibold">
+          {/* 副标题 */}
+          <p className="text-xl md:text-2xl lg:text-3xl text-gray-700 mb-6 tracking-wide font-semibold">
             区块链创新实验室
           </p>
 
-          {/* 介绍文字 - 更大更突出 */}
-          <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-5xl mx-auto leading-relaxed font-medium">
+          {/* 介绍文字 */}
+          <p className="text-base md:text-lg lg:text-xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
             探索去中心化技术的未来，汇聚 Web3 工具、空投机会与前沿知识
             <br />
             让创新触手可及，让去中心化惠及每个人
           </p>
 
-          {/* CTA 按钮 - 更大更突出 */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
+          {/* CTA 按钮 */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
               href="/tools"
-              className="group relative px-16 py-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-bold text-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50"
+              className="group relative px-10 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-bold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300/50"
               style={{ animation: 'pulse-glow 2s ease-in-out infinite' }}
             >
               <div className="absolute inset-0 shimmer"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <span className="relative flex items-center">
                 探索工具
-                <svg className="w-6 h-6 ml-3 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </span>
@@ -218,12 +235,12 @@ export default function Home() {
 
             <Link
               href="/airdrops"
-              className="group relative px-16 py-6 bg-white border-2 border-gray-200 text-gray-700 rounded-2xl font-bold text-2xl overflow-hidden transition-all duration-500 hover:scale-105 hover:border-blue-400 hover:bg-blue-50 hover:shadow-xl"
+              className="group relative px-10 py-4 bg-white border-2 border-gray-200 text-gray-700 rounded-2xl font-bold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:border-blue-400 hover:bg-blue-50 hover:shadow-xl"
             >
               <div className="absolute inset-0 bg-blue-50 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
               <span className="relative flex items-center">
                 空投任务
-                <svg className="w-6 h-6 ml-3 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                 </svg>
               </span>
@@ -263,21 +280,34 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
             {[
               {
-                icon: '🔧',
+                icon: (
+                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                ),
                 title: '工具导航',
                 description: '精选 100+ Web3 工具，覆盖 AI、DeFi、NFT 等多个领域',
                 color: 'from-blue-600 to-cyan-600',
                 link: '/tools',
               },
               {
-                icon: '🎁',
+                icon: (
+                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                  </svg>
+                ),
                 title: '空投任务',
                 description: '实时追踪全网空投机会，支持多链筛选，不错过任何福利',
                 color: 'from-purple-600 to-pink-600',
                 link: '/airdrops',
               },
               {
-                icon: '📚',
+                icon: (
+                  <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                ),
                 title: '知识库',
                 description: '深度解析区块链技术，从入门到精通的系统化学习路径',
                 color: 'from-green-600 to-emerald-600',
@@ -298,7 +328,7 @@ export default function Home() {
 
                 {/* 图标动画 */}
                 <div className="relative">
-                  <div className={`inline-block p-6 bg-gradient-to-br ${feature.color} rounded-3xl mb-8 text-6xl shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
+                  <div className={`inline-block p-6 bg-gradient-to-br ${feature.color} rounded-3xl mb-8 text-white shadow-xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3`}>
                     {feature.icon}
                   </div>
                   <h3 className="text-3xl font-bold mb-6 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">

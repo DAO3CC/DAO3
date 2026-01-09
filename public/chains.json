@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ethereum",
+    "name": "Ethereum",
+    "icon": "⟠",
+    "color": "from-blue-600 to-indigo-600",
+    "logo": "https://cryptologos.cc/logos/ethereum-eth-logo.png"
+  },
+  {
+    "id": "bsc",
+    "name": "BNB Chain",
+    "icon": "⬡",
+    "color": "from-yellow-500 to-orange-600",
+    "logo": "https://cryptologos.cc/logos/bnb-bnb-logo.png"
+  },
+  {
+    "id": "base",
+    "name": "Base",
+    "icon": "🔵",
+    "color": "from-blue-500 to-cyan-500",
+    "logo": "https://avatars.githubusercontent.com/u/108554348"
+  },
+  {
+    "id": "arbitrum",
+    "name": "Arbitrum",
+    "icon": "🔷",
+    "color": "from-blue-500 to-blue-700",
+    "logo": "https://cryptologos.cc/logos/arbitrum-arb-logo.png"
+  },
+  {
+    "id": "optimism",
+    "name": "Optimism",
+    "icon": "🔴",
+    "color": "from-red-500 to-pink-600",
+    "logo": "https://cryptologos.cc/logos/optimism-ethereum-op-logo.png"
+  },
+  {
+    "id": "solana",
+    "name": "Solana",
+    "icon": "◎",
+    "color": "from-purple-500 to-violet-600",
+    "logo": "https://cryptologos.cc/logos/solana-sol-logo.png"
+  },
+  {
+    "id": "polygon",
+    "name": "Polygon",
+    "icon": "⬡",
+    "color": "from-purple-600 to-indigo-600",
+    "logo": "https://cryptologos.cc/logos/polygon-matic-logo.png"
+  },
+  {
+    "id": "avalanche",
+    "name": "Avalanche",
+    "icon": "🔺",
+    "color": "from-red-600 to-orange-600",
+    "logo": "https://cryptologos.cc/logos/avalanche-avax-logo.png"
+  }
+]

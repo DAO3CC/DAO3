@@ -1,0 +1,574 @@
+{
+  "categories": [
+    {
+      "id": "hot",
+      "name": "热门",
+      "slug": "hot",
+      "icon": "🔥",
+      "order": 0
+    },
+    {
+      "id": "dat-dashboard",
+      "name": "DAT数据看板",
+      "slug": "dat-dashboard",
+      "icon": "📊",
+      "order": 1
+    },
+    {
+      "id": "ai-agent",
+      "name": "AI Agent",
+      "slug": "ai-agent",
+      "icon": "🤖",
+      "order": 2
+    },
+    {
+      "id": "meme",
+      "name": "Meme常用工具",
+      "slug": "meme",
+      "icon": "🐸",
+      "order": 3
+    },
+    {
+      "id": "blockchain-explorer",
+      "name": "区块浏览器",
+      "slug": "blockchain-explorer",
+      "icon": "🔍",
+      "order": 4
+    },
+    {
+      "id": "data",
+      "name": "综合数据",
+      "slug": "data",
+      "icon": "📈",
+      "order": 5
+    },
+    {
+      "id": "btc-ecosystem",
+      "name": "BTC生态工具",
+      "slug": "btc-ecosystem",
+      "icon": "₿",
+      "order": 6
+    },
+    {
+      "id": "cefi",
+      "name": "CeFi",
+      "slug": "cefi",
+      "icon": "🏦",
+      "order": 7
+    },
+    {
+      "id": "defi",
+      "name": "DeFi",
+      "slug": "defi",
+      "icon": "💰",
+      "order": 8
+    },
+    {
+      "id": "nft",
+      "name": "NFT",
+      "slug": "nft",
+      "icon": "🎨",
+      "order": 9
+    },
+    {
+      "id": "dao",
+      "name": "DAO",
+      "slug": "dao",
+      "icon": "🏛️",
+      "order": 10
+    },
+    {
+      "id": "dapp",
+      "name": "DApp",
+      "slug": "dapp",
+      "icon": "🎮",
+      "order": 11
+    },
+    {
+      "id": "airdrop",
+      "name": "空投",
+      "slug": "airdrop",
+      "icon": "🎁",
+      "order": 12
+    },
+    {
+      "id": "mining",
+      "name": "矿业",
+      "slug": "mining",
+      "icon": "⛏️",
+      "order": 13
+    },
+    {
+      "id": "wallet",
+      "name": "钱包和授权管理",
+      "slug": "wallet",
+      "icon": "👛",
+      "order": 14
+    },
+    {
+      "id": "other",
+      "name": "其他",
+      "slug": "other",
+      "icon": "🔧",
+      "order": 15
+    }
+  ],
+  "tools": [
+    {
+      "id": "1",
+      "name": "推特KOL列表",
+      "desc": "推荐关注的Twitter账号",
+      "icon": "/icons/推特KOL列表-1.jpg",
+      "category": "hot",
+      "url": "https://x.com/DAO3CC/summary"
+    },
+    {
+      "id": "2",
+      "name": "GMGN.Ai",
+      "desc": "MEME交易终端",
+      "icon": "/icons/GMGN.Ai-2.jpg",
+      "category": "hot",
+      "url": "https://gmgn.ai"
+    },
+    {
+      "id": "3",
+      "name": "Etherscan",
+      "desc": "以太坊区块链浏览器",
+      "icon": "/icons/Etherscan-3.png",
+      "category": "hot",
+      "url": "https://etherscan.io"
+    },
+    {
+      "id": "4",
+      "name": "MetaMask",
+      "desc": "Web3钱包",
+      "icon": "/icons/MetaMask-4.jpg",
+      "category": "hot",
+      "url": "https://metamask.io"
+    },
+    {
+      "id": "5",
+      "name": "DeFi LIama",
+      "desc": "全链DeFi数据",
+      "icon": "/icons/DeFi-LIama-5.jpg",
+      "category": "hot",
+      "url": "https://defillama.com"
+    },
+    {
+      "id": "6",
+      "name": "CoinMarketCap",
+      "desc": "行情数据网站",
+      "icon": "/icons/CoinMarketCap-6.jpg",
+      "category": "hot",
+      "url": "https://coinmarketcap.com"
+    },
+    {
+      "id": "7",
+      "name": "Dune",
+      "desc": "综合链上数据分析",
+      "icon": "/icons/Dune-7.png",
+      "category": "hot",
+      "url": "https://dune.com"
+    },
+    {
+      "id": "8",
+      "name": "Debank",
+      "desc": "加密投资组合追踪",
+      "icon": "/icons/Debank-8.jpg",
+      "category": "hot",
+      "url": "https://debank.com"
+    },
+    {
+      "id": "9",
+      "name": "Blockworks",
+      "desc": "加密财库公司综合看板",
+      "icon": "/icons/Blockworks-9.jpg",
+      "category": "dat-dashboard",
+      "url": "https://blockworks.co"
+    },
+    {
+      "id": "10",
+      "name": "DELPHI DIGITAL",
+      "desc": "加密财库公司综合看板",
+      "icon": "/icons/DELPHI-DIGITAL-10.jpg",
+      "category": "dat-dashboard",
+      "url": "https://delphidigital.io"
+    },
+    {
+      "id": "11",
+      "name": "DefiLlama",
+      "desc": "加密财库公司综合看板",
+      "icon": "/icons/DefiLlama-11.jpg",
+      "category": "dat-dashboard",
+      "url": "https://defillama.com/treasuries"
+    },
+    {
+      "id": "12",
+      "name": "THE BLOCK",
+      "desc": "加密财库公司综合看板",
+      "icon": "/icons/THE-BLOCK-12.jpg",
+      "category": "dat-dashboard",
+      "url": "https://www.theblock.co"
+    },
+    {
+      "id": "13",
+      "name": "Act I : The AI Prophecy",
+      "desc": "AI交互协作平台",
+      "icon": "/icons/Act-I-:-The-AI-Prophecy-13.jpg",
+      "category": "ai-agent",
+      "url": "https://act1.ai"
+    },
+    {
+      "id": "14",
+      "name": "AGENCY",
+      "desc": "AI Agent分析师",
+      "icon": "/icons/AGENCY-14.jpg",
+      "category": "ai-agent",
+      "url": "https://agency.xyz"
+    },
+    {
+      "id": "15",
+      "name": "AI16Z",
+      "desc": "去中心化AI交易基金",
+      "icon": "/icons/AI16Z-15.jpg",
+      "category": "ai-agent",
+      "url": "https://ai16z.com"
+    },
+    {
+      "id": "16",
+      "name": "aiPool",
+      "desc": "AI Agent自主发币",
+      "icon": "/icons/aiPool-16.jpg",
+      "category": "ai-agent",
+      "url": "https://aipool.xyz"
+    },
+    {
+      "id": "17",
+      "name": "AIXBT",
+      "desc": "AI驱动的加密情报平台",
+      "icon": "/icons/AIXBT-17.jpg",
+      "category": "ai-agent",
+      "url": "https://aixbt.ai"
+    },
+    {
+      "id": "18",
+      "name": "Alchemist AI",
+      "desc": "无代码开发平台",
+      "icon": "/icons/Alchemist-AI-18.jpg",
+      "category": "ai-agent",
+      "url": "https://alchemists.ai"
+    },
+    {
+      "id": "19",
+      "name": "Anon",
+      "desc": "AI发币",
+      "icon": "/icons/Anon-19.jpg",
+      "category": "ai-agent",
+      "url": "https://anon.ai"
+    },
+    {
+      "id": "20",
+      "name": "arc",
+      "desc": "AI框架",
+      "icon": "/icons/arc-20.jpg",
+      "category": "ai-agent",
+      "url": "https://arc.app"
+    },
+    {
+      "id": "21",
+      "name": "AVA",
+      "desc": "专注视觉与视频内容的跨平台",
+      "icon": "/icons/AVA-21.jpg",
+      "category": "ai-agent",
+      "url": "https://ava.ai"
+    },
+    {
+      "id": "22",
+      "name": "Clanker",
+      "desc": "AI驱动的Token Bot",
+      "icon": "/icons/Clanker-22.jpg",
+      "category": "ai-agent",
+      "url": "https://clanker.ai"
+    },
+    {
+      "id": "23",
+      "name": "Cookie",
+      "desc": "AI Agent索引平台",
+      "icon": "/icons/Cookie-23.jpg",
+      "category": "ai-agent",
+      "url": "https://cookie.fun"
+    },
+    {
+      "id": "24",
+      "name": "Dolion",
+      "desc": "AI机器人",
+      "icon": "/icons/Dolion-24.jpg",
+      "category": "ai-agent",
+      "url": "https://dolion.ai"
+    },
+    {
+      "id": "25",
+      "name": "DUNA",
+      "desc": "AI DAO",
+      "icon": "/icons/DUNA-25.jpg",
+      "category": "ai-agent",
+      "url": "https://duna.ai"
+    },
+    {
+      "id": "26",
+      "name": "Eilza",
+      "desc": "模块化AI智能体框架",
+      "icon": "/icons/Eilza-26.jpg",
+      "category": "ai-agent",
+      "url": "https://eilza.ai"
+    },
+    {
+      "id": "27",
+      "name": "Fartcoin",
+      "desc": "Terminal of Truths上的首个MEME",
+      "icon": "/icons/Fartcoin-27.jpg",
+      "category": "ai-agent",
+      "url": "https://fartcoin.ai"
+    },
+    {
+      "id": "28",
+      "name": "G.A.M.E",
+      "desc": "模块化的智能代理框架",
+      "icon": "/icons/G.A.M.E-28.jpg",
+      "category": "ai-agent",
+      "url": "https://game.gg"
+    },
+    {
+      "id": "29",
+      "name": "Goatseus Maximus",
+      "desc": "AI概念MEME币",
+      "icon": "/icons/Goatseus-Maximus-29.jpg",
+      "category": "ai-agent",
+      "url": "https://goatseusmaximus.com"
+    },
+    {
+      "id": "30",
+      "name": "Griffain",
+      "desc": "AI助手",
+      "icon": "/icons/Griffain-30.png",
+      "category": "ai-agent",
+      "url": "https://griffain.ai"
+    },
+    {
+      "id": "31",
+      "name": "LEXICON",
+      "desc": "开源AI Agent框架",
+      "icon": "/icons/LEXICON-31.png",
+      "category": "ai-agent",
+      "url": "https://github.com/agentic-lexicon"
+    },
+    {
+      "id": "32",
+      "name": "Luminous",
+      "desc": "AI自主协作的集体智慧",
+      "icon": "/icons/Luminous-32.jpg",
+      "category": "ai-agent",
+      "url": "https://luminous.ai"
+    },
+    {
+      "id": "33",
+      "name": "Luna",
+      "desc": "AI虚拟人",
+      "icon": "/icons/Luna-33.jpg",
+      "category": "ai-agent",
+      "url": "https://luna.ai"
+    },
+    {
+      "id": "34",
+      "name": "MAX",
+      "desc": "AI Agent Launchpad平台",
+      "icon": "/icons/MAX-34.jpg",
+      "category": "ai-agent",
+      "url": "https://max.ai"
+    },
+    {
+      "id": "35",
+      "name": "Neur",
+      "desc": "AI助手",
+      "icon": "/icons/Neur-35.jpg",
+      "category": "ai-agent",
+      "url": "https://neur.ai"
+    },
+    {
+      "id": "36",
+      "name": "SPORE",
+      "desc": "自主AI进化平台",
+      "icon": "/icons/SPORE-36.jpg",
+      "category": "ai-agent",
+      "url": "https://spore.ai"
+    },
+    {
+      "id": "37",
+      "name": "SwarmNode.ai",
+      "desc": "简化AI Agent部署",
+      "icon": "/icons/SwarmNode.ai-37.jpg",
+      "category": "ai-agent",
+      "url": "https://swarmnode.ai"
+    },
+    {
+      "id": "38",
+      "name": "swarms",
+      "desc": "AI框架",
+      "icon": "/icons/swarms-38.jpg",
+      "category": "ai-agent",
+      "url": "https://swarms.ai"
+    },
+    {
+      "id": "39",
+      "name": "The Hive",
+      "desc": "基于AI Agent的DeFi项目",
+      "icon": "/icons/The-Hive-39.jpg",
+      "category": "ai-agent",
+      "url": "https://thehive.ai"
+    },
+    {
+      "id": "40",
+      "name": "VaderAI",
+      "desc": "投资DAO网络",
+      "icon": "/icons/VaderAI-40.jpg",
+      "category": "ai-agent",
+      "url": "https://vaderai.capital"
+    },
+    {
+      "id": "41",
+      "name": "Virtuals Protocol",
+      "desc": "AI Agent资产发行平台",
+      "icon": "/icons/Virtuals-Protocol-41.jpg",
+      "category": "ai-agent",
+      "url": "https://virtuals.io"
+    },
+    {
+      "id": "42",
+      "name": "vvaifu.fun",
+      "desc": "AI Agent项目创建及发行平台",
+      "icon": "/icons/vvaifu.fun-42.jpg",
+      "category": "ai-agent",
+      "url": "https://vvaifu.fun"
+    },
+    {
+      "id": "43",
+      "name": "YNE",
+      "desc": "DeSci+AI Agent",
+      "icon": "/icons/YNE-43.jpg",
+      "category": "ai-agent",
+      "url": "https://yne.ai"
+    },
+    {
+      "id": "44",
+      "name": "ZAILGO",
+      "desc": "AI框架",
+      "icon": "/icons/ZAILGO-44.jpg",
+      "category": "ai-agent",
+      "url": "https://zailgo.ai"
+    },
+    {
+      "id": "45",
+      "name": "pump.fun",
+      "desc": "Solana上Meme发布平台",
+      "icon": "/icons/pump.fun-45.jpg",
+      "category": "meme",
+      "url": "https://pump.fun"
+    },
+    {
+      "id": "46",
+      "name": "Phantom",
+      "desc": "Sol链常用钱包",
+      "icon": "/icons/Phantom-46.jpg",
+      "category": "meme",
+      "url": "https://phantom.app"
+    },
+    {
+      "id": "47",
+      "name": "pump.news",
+      "desc": "MEME社交媒体雷达",
+      "icon": "/icons/pump.news-47.png",
+      "category": "meme",
+      "url": "https://pump.news"
+    },
+    {
+      "id": "48",
+      "name": "Cryptohunt",
+      "desc": "Web3智能投研平台",
+      "icon": "/icons/Cryptohunt-48.png",
+      "category": "meme",
+      "url": "https://cryptohunt.ai"
+    },
+    {
+      "id": "49",
+      "name": "DEX Screener",
+      "desc": "Altcoin数据平台",
+      "icon": "/icons/DEX-Screener-49.jpg",
+      "category": "meme",
+      "url": "https://dexscreener.com"
+    },
+    {
+      "id": "50",
+      "name": "Bubblemaps",
+      "desc": "链上资产可视化平台",
+      "icon": "/icons/Bubblemaps-50.png",
+      "category": "meme",
+      "url": "https://bubblemaps.io"
+    },
+    {
+      "id": "51",
+      "name": "Birdeye",
+      "desc": "链上交易数据聚合器",
+      "icon": "/icons/Birdeye-51.jpg",
+      "category": "meme",
+      "url": "https://birdeye.com"
+    },
+    {
+      "id": "52",
+      "name": "DEXTools",
+      "desc": "DEX数据分析平台",
+      "icon": "/icons/DEXTools-52.jpg",
+      "category": "meme",
+      "url": "https://www.dextools.io"
+    },
+    {
+      "id": "53",
+      "name": "Ave.ai",
+      "desc": "链上数据复制交易平台",
+      "icon": "/icons/Ave.ai-53.jpg",
+      "category": "meme",
+      "url": "https://ave.ai"
+    },
+    {
+      "id": "54",
+      "name": "HolderScan",
+      "desc": "筹码查询工具",
+      "icon": "/icons/HolderScan-54.jpg",
+      "category": "meme",
+      "url": "https://holderscan.com"
+    },
+    {
+      "id": "55",
+      "name": "Jupiter",
+      "desc": "Solana DEX聚合器",
+      "icon": "/icons/Jupiter-55.jpg",
+      "category": "meme",
+      "url": "https://jupiter.ag"
+    },
+    {
+      "id": "56",
+      "name": "Raydium",
+      "desc": "Solana链上订单簿",
+      "icon": "/icons/Raydium-56.jpg",
+      "category": "meme",
+      "url": "https://raydium.io"
+    },
+    {
+      "id": "57",
+      "name": "BonkBot",
+      "desc": "基于Solana的机器人",
+      "icon": "/icons/BonkBot-57.jpg",
+      "category": "meme",
+      "url": "https://bonkbot.com"
+    }
+  ]
+}
