@@ -7,7 +7,6 @@ import { Tool } from '@/types';
 
 export default function ToolsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useState<string[]>([]);
   // 初始展开所有分类，除了"全部工具"（all）
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
@@ -113,7 +112,7 @@ export default function ToolsPage() {
     }
   };
 
-  // Filter tools based on category and search query
+  // Filter tools based on category
   const filteredTools = useMemo(() => {
     return mockTools.filter((tool) => {
       const matchesCategory =
@@ -122,15 +121,9 @@ export default function ToolsPage() {
         selectedCategory === null ? true :
         tool.category === selectedCategory;
 
-      const matchesSearch =
-        searchQuery === '' ||
-        tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tool.tags?.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-
-      return matchesCategory && matchesSearch;
+      return matchesCategory;
     });
-  }, [selectedCategory, searchQuery, favorites]);
+  }, [selectedCategory, favorites]);
 
   return (
     <>
@@ -320,86 +313,10 @@ export default function ToolsPage() {
 
       {/* 主内容区域 - 添加左边距和padding以避开固定的侧边栏 */}
       <div className="ml-24 md:ml-56">
-        {/* Hero Section */}
-        <section className="bg-gray-50 py-12 px-4 mb-6">
-          <div className="container mx-auto text-center">
-            {/* Wrench Icon */}
-            <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-
-            {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-500 mb-4">
-              Web3 工具导航
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-base text-gray-500 mb-8 max-w-2xl mx-auto">
-              探索优质 Web3 工具，提升你的区块链体验
-            </p>
-
-            {/* Search Box */}
-            <div className="max-w-2xl mx-auto">
-              <div className="relative">
-                <svg
-                  className="absolute left-5 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-                <input
-                  type="text"
-                  placeholder="搜索工具名称、描述或标签..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-14 pr-6 py-4 bg-white border border-gray-200 rounded-xl text-gray-900 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all shadow-sm"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 工具列表内容 */}
         <div className="px-4 pb-6">
-            {/* 搜索结果 */}
-            {searchQuery && (
-              <div className="mb-8">
-                <p className="text-sm text-gray-600 mb-4">
-                  找到 <span className="text-gray-900 font-medium">{filteredTools.length}</span> 个工具
-                </p>
-                {filteredTools.length > 0 ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
-                    {filteredTools.map((tool) => (
-                      <ToolCard
-                        key={tool.id}
-                        tool={tool}
-                        onToggleFavorite={handleToggleFavorite}
-                        isFavorite={favorites.includes(tool.id)}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <div className="text-center py-16 bg-white border-2 border-dashed border-gray-200 rounded-2xl">
-                    <div className="text-6xl mb-4">🔍</div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">没有找到相关工具</h3>
-                    <p className="text-gray-600">请尝试使用不同的搜索词</p>
-                  </div>
-                )}
-              </div>
-            )}
-
             {/* 按分类显示所有工具 */}
-            {!searchQuery && (
+            <div className="space-y-4">
               <div className="space-y-4">
                 {/* 我常看的 */}
                 <section
@@ -544,7 +461,7 @@ export default function ToolsPage() {
                   );
                 })}
               </div>
-            )}
+          </div>
         </div>
       </div>
     </div>
