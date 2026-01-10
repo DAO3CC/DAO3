@@ -236,7 +236,7 @@ export default function ToolsPage() {
                         <span className="text-[50px] icon-3d">{category.icon || '📁'}</span>
                       )}
                       <span className="icon-label text-xs mt-1 font-medium opacity-0 transition-opacity duration-300 truncate w-full text-center">
-                        {category.shortName || category.name}
+                        {category.name}
                       </span>
                     </button>
                   </div>

@@ -17,20 +17,17 @@ export default function Template({ children }: { children: ReactNode }) {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
     },
     exit: {
       opacity: 0,
       scale: 0.95,
       y: -20,
-      transition: {
-        duration: 0.3,
-        ease: [0.25, 0.1, 0.25, 1],
-      },
     },
+  };
+
+  const transition = {
+    duration: 0.4,
+    ease: [0.25, 0.1, 0.25, 1] as const,
   };
 
   return (
@@ -41,6 +38,7 @@ export default function Template({ children }: { children: ReactNode }) {
         animate="animate"
         exit="exit"
         variants={variants}
+        transition={transition}
         className="w-full"
         style={{
           willChange: 'transform, opacity',
